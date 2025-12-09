@@ -3,78 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WellTrack U - Daily Log</title>
+    <title>WellTrack U - Login</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-<body>
+<body class="auth-page">
 
-    <header>
-        <div class="header-content">
-            <h1 class="site-title">WELLTRACK U</h1>
+    <div class="auth-container">
+        <section class="auth-card">
+            <h2>User Login</h2>
+            <h5>Enter your credentials below to access WellTrack U.</h5>
             
-            <nav>
-                <ul class="main-nav">
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="index.html" class="active">Daily Log</a></li>
-                    <li><a href="report.html">Monthly Report</a></li>
-                    <li><a href="meditate.html">Meditation</a></li>
-                    <li><a href="team.html">About the Team</a></li>
-                </ul>
-                <div class="auth-buttons">
-                    <button id="logout-btn" class="auth-btn">Logout</button>
-                </div>
-            </nav>
-        </div>
-    </header>
+            <p id="auth-message" class="hidden error-message"></p>
 
-    <div class="container">
-        
-        <h2>📅 Track Your Wellness Today</h2>
-
-        <section>
-            <h3>Daily Wellness Log</h3>
-            <form id="daily-log-form">
-                
-                <p id="message" class="hidden success-message"></p>
-
+            <form id="login-form">
                 <div class="form-group">
-                    <label for="entry-date">Date of Entry:</label>
-                    <input type="date" id="entry-date" required>
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" required>
                 </div>
-
                 <div class="form-group">
-                    <label>1. How would you rate your mood today?</label>
-                    <input type="hidden" id="mood-value-input" required>
-                    <div class="mood-selector">
-                        <button type="button" class="mood-btn" data-value="5">😁 Excellent</button>
-                        <button type="button" class="mood-btn" data-value="4">😊 Good</button>
-                        <button type="button" class="mood-btn" data-value="3">😐 Neutral</button>
-                        <button type="button" class="mood-btn" data-value="2">😞 Low</button>
-                        <button type="button" class="mood-btn" data-value="1">😠 Stressed/Bad</button>
-                    </div>
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" required>
                 </div>
-
-                <div class="form-group">
-                    <label for="stress-level">2. How stressed did you feel? (1=Low, 5=High)</label>
-                    <input type="range" id="stress-level" name="stress-level" min="1" max="5" value="3" required>
-                    <span id="stress-value">3</span> / 5
-                </div>
-                
-                <div class="form-group">
-                    <label for="sleep-duration">3. How many hours did you sleep last night?</label>
-                    <input type="number" id="sleep-duration" name="sleep-duration" min="0" max="12" step="0.5" value="7.0" required>
-                </div>
-                
-                <button type="submit" class="btn primary">Save Daily Log</button>
+                <button type="submit" class="btn primary">Login</button>
             </form>
-        </section>
 
+            <p class="switch-auth-link">
+                Don't have an account? <a href="register.html">Register here</a>
+            </p>
+        </section>
     </div>
 
-    <footer>
-        <p>&copy; 2025 WellTrack U. All rights reserved.</p>
-    </footer>
-    
 </body>
 </html>

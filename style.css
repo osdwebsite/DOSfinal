@@ -176,7 +176,7 @@ section {
 }
 
 /* * ========================================
- * AUTH PAGE STYLES (login.html & register.html)
+ * AUTH PAGE STYLES (index.html & register.html)
  * ========================================
  */
 
@@ -251,7 +251,22 @@ input[type=number]:focus {
     outline: none;
 }
 
-/* Removed Textarea styling (as Notes were removed from Daily Log) */
+/* ADDED BACK: Textarea styling for Daily Log Notes */
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1em;
+    resize: vertical; 
+    transition: border-color 0.3s;
+    font-family: inherit; 
+}
+
+textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
 
 
 /* Custom Range/Stress-input style */
@@ -260,7 +275,6 @@ input[type="range"] {
     margin-right: 15px;
     vertical-align: middle;
     -webkit-appearance: none;
-    appearance: none;
     height: 8px;
     background: #ddd;
     border-radius: 4px;

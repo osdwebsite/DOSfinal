@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Determine which page we are on based on the <title> tag text
     const titleText = document.body.parentElement.querySelector('title').textContent;
     
-    // Initialize main app pages (home.html, index.html, report.html, etc.)
+    // Initialize main app pages (home.html, login.html, report.html, etc.)
     if (titleText.includes('Home') || titleText.includes('Daily Log') || titleText.includes('Monthly Report') || titleText.includes('Meditation') || titleText.includes('About the Team')) {
         initMainAppPages();
     } else if (titleText.includes('Login') || titleText.includes('Register')) {
@@ -37,7 +37,7 @@ function displayAuthMessage(element, message, isError = true) {
     element.style.color = isError ? '#F44336' : 'var(--secondary-color)'; 
 }
 
-// --- Main Pages Logic (home.html, index.html, report.html, etc.) ---
+// --- Main Pages Logic (home.html, login.html, report.html, etc.) ---
 
 function initMainAppPages() {
     const titleText = document.body.parentElement.querySelector('title').textContent;
@@ -47,8 +47,8 @@ function initMainAppPages() {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => { 
             alert('Logged out successfully. Redirecting to Login.');
-            // This clears the simulated session and redirects
-            window.location.href = 'login.html'; 
+            // Redirects to the new login page (index.html)
+            window.location.href = 'index.html'; 
         });
     }
 
@@ -61,7 +61,7 @@ function initMainAppPages() {
 }
 
 
-// --- Auth Page Logic (login.html, register.html) ---
+// --- Auth Page Logic (index.html, register.html) ---
 
 function initAuthPage() {
     const loginForm = document.getElementById('login-form');
@@ -88,11 +88,11 @@ function handleLogin(e) {
         return;
     }
     
-    // Successful login action: Redirect to the new home.html page
-    displayAuthMessage(messageElement, `Login successful for ${email}! Redirecting to Home.`, false);
+    // Successful login action: Redirect to the new Daily Log page (login.html)
+    displayAuthMessage(messageElement, `Login successful for ${email}! Redirecting to Daily Log.`, false);
     
     setTimeout(() => {
-        window.location.href = 'home.html'; 
+        window.location.href = 'login.html'; 
     }, 1500);
 }
 
@@ -118,15 +118,15 @@ function handleRegister(e) {
         return;
     }
 
-    // Successful registration action: Redirect to login
+    // Successful registration action: Redirect to the new login page (index.html)
     displayAuthMessage(messageElement, `Registration successful for ${email}! Proceeding to login...`, false);
 
     setTimeout(() => {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
     }, 1500);
 }
 
-// --- Daily Log Page Logic (index.html) ---
+// --- Daily Log Page Logic (login.html) ---
 
 function initDailyLogPage() {
     const form = document.getElementById('daily-log-form');
@@ -136,7 +136,7 @@ function initDailyLogPage() {
     const stressValueSpan = document.getElementById('stress-value');
     const messageElement = document.getElementById('message');
     const dateInput = document.getElementById('entry-date');
-    // const notesInput = document.getElementById('daily-notes'); // Notes Input - REMOVED
+    const notesInput = document.getElementById('daily-notes'); // Notes Input - ADDED BACK
 
     const today = new Date().toISOString().split('T')[0];
     dateInput.value = today;
@@ -174,7 +174,7 @@ function initDailyLogPage() {
             mood: parseInt(moodValueInput.value),
             stress: parseInt(stressLevelInput.value),
             sleep: parseFloat(document.getElementById('sleep-duration').value),
-            // notes: notesInput.value.trim() // REMOVED: Notes field
+            notes: notesInput.value.trim() // Notes field - ADDED BACK
         };
 
         entries.unshift(newEntry);
@@ -366,7 +366,7 @@ function displayFullHistory(entries) {
     if (entries.length === 0) {
         const row = tableBody.insertRow();
         const cell = row.insertCell();
-        cell.colSpan = 4; // ADJUSTED: Colspan set to 4
+        cell.colSpan = 4; // Colspan set to 4 (Date, Mood, Stress, Sleep)
         cell.textContent = 'No entries found for the selected date or in recent history.';
         cell.style.textAlign = 'center';
         cell.style.fontStyle = 'italic';
@@ -389,6 +389,6 @@ function displayFullHistory(entries) {
         row.insertCell().textContent = moodText;
         row.insertCell().textContent = `${entry.stress}/5`;
         row.insertCell().textContent = entry.sleep;
-        // The Notes column cell is deliberately excluded here.
+        // The Notes column cell is deliberately excluded here, as requested.
     });
 }

@@ -9,31 +9,31 @@
 </head>
 <body class="auth-page">
 
-    <div class="container auth-container">
-        <div class="auth-card">
-            <h2>Create an Account</h2>
-            <p>Join WellTrack U to start logging your wellness data.</p>
+    <div class="auth-container">
+        <section class="auth-card">
+            <h2>Create Your WellTrack U Account</h2>
             
+            <p id="auth-message" class="hidden error-message"></p>
+
             <form id="register-form">
                 <div class="form-group">
-                    <label for="register-email">Email Address</label>
+                    <label for="register-email">Email:</label>
                     <input type="email" id="register-email" required>
                 </div>
                 <div class="form-group">
-                    <label for="register-password">Password</label>
+                    <label for="register-password">Password:</label>
                     <input type="password" id="register-password" required>
                 </div>
                 <div class="form-group">
-                    <label for="confirm-password">Confirm Password</label>
+                    <label for="confirm-password">Confirm Password:</label>
                     <input type="password" id="confirm-password" required>
                 </div>
-                
-                <p id="auth-message" class="error-message hidden"></p>
                 <button type="submit" class="btn primary">Register</button>
-                
-                <p class="switch-auth-link">Already have an account? <a href="login.html">Login here</a></p>
             </form>
-        </div>
+
+            <p class="switch-auth-link">
+                Already have an account? <a href="index.html">Log in here</a> </p>
+        </section>
     </div>
 
 </body>
