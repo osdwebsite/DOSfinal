@@ -251,22 +251,8 @@ input[type=number]:focus {
     outline: none;
 }
 
-/* NEW: Textarea styling for Daily Log Notes */
-textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 1em;
-    resize: vertical; /* Allow vertical resizing only */
-    transition: border-color 0.3s;
-    font-family: inherit; /* Use same font as body */
-}
+/* Removed Textarea styling (as Notes were removed from Daily Log) */
 
-textarea:focus {
-    border-color: var(--accent-color);
-    outline: none;
-}
 
 /* Custom Range/Stress-input style */
 input[type="range"] {
@@ -515,11 +501,11 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .bar-stress {
-    background-color: #F44336; /* Red (Color fix: Stress is usually red/warning) */
+    background-color: #F44336; /* Red (Stress) */
 }
 
 .bar-sleep {
-    background-color: var(--secondary-color); /* Blue (Color fix: Sleep is usually blue/calm) */
+    background-color: var(--secondary-color); /* Blue (Sleep) */
 }
 
 .chart-legend {
@@ -605,12 +591,6 @@ input[type="range"]::-webkit-slider-thumb {
     background-color: #f0f0f0;
 }
 
-/* Style for Notes Column */
-#data-history-table th:nth-child(5),
-#data-history-table td:nth-child(5) {
-    width: 30%; 
-    max-width: 250px;
-}
 
 /* --- Meditation Page Specifics --- */
 

@@ -30,18 +30,22 @@
 
     <div class="container">
         
-        <section class="log-form-section">
-            <h2>Log Your Daily Mood</h2>
+        <h2>📅 Track Your Wellness Today</h2>
 
+        <section>
+            <h3>Daily Wellness Log</h3>
             <form id="daily-log-form">
                 
+                <p id="message" class="hidden success-message"></p>
+
                 <div class="form-group">
-                    <label for="entry-date">Date of Entry</label>
+                    <label for="entry-date">Date of Entry:</label>
                     <input type="date" id="entry-date" required>
                 </div>
-                
+
                 <div class="form-group">
-                    <label>How was your mood today? (Select one)</label>
+                    <label>1. How would you rate your mood today?</label>
+                    <input type="hidden" id="mood-value-input" required>
                     <div class="mood-selector">
                         <button type="button" class="mood-btn" data-value="5">😁 Excellent</button>
                         <button type="button" class="mood-btn" data-value="4">😊 Good</button>
@@ -49,31 +53,23 @@
                         <button type="button" class="mood-btn" data-value="2">😞 Low</button>
                         <button type="button" class="mood-btn" data-value="1">😠 Stressed/Bad</button>
                     </div>
-                    <input type="hidden" id="mood-value-input" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="stress-level">Current Stress Level (1-5): 
-                        <span id="stress-value">3</span>
-                    </label>
-                    <input type="range" id="stress-level" min="1" max="5" value="3" required>
+                    <label for="stress-level">2. How stressed did you feel? (1=Low, 5=High)</label>
+                    <input type="range" id="stress-level" name="stress-level" min="1" max="5" value="3" required>
+                    <span id="stress-value">3</span> / 5
                 </div>
-
+                
                 <div class="form-group">
-                    <label for="sleep-duration">Hours of Sleep Last Night</label>
-                    <input type="number" id="sleep-duration" min="0" max="15" step="0.5" value="7.0" required>
+                    <label for="sleep-duration">3. How many hours did you sleep last night?</label>
+                    <input type="number" id="sleep-duration" name="sleep-duration" min="0" max="12" step="0.5" value="7.0" required>
                 </div>
-
-                <div class="form-group">
-                    <label for="daily-notes">Journal Entry / Quick Notes about your day (Optional)</label>
-                    <textarea id="daily-notes" rows="4" placeholder="Describe any notable events, feelings, or activities that affected your ratings..."></textarea>
-                </div>
-                <p id="message" class="success-message hidden"></p>
-
-                <button type="submit" class="btn primary">Save Daily Entry</button>
+                
+                <button type="submit" class="btn primary">Save Daily Log</button>
             </form>
         </section>
-        
+
     </div>
 
     <footer>

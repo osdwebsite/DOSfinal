@@ -136,7 +136,7 @@ function initDailyLogPage() {
     const stressValueSpan = document.getElementById('stress-value');
     const messageElement = document.getElementById('message');
     const dateInput = document.getElementById('entry-date');
-    const notesInput = document.getElementById('daily-notes'); // ADDED: Notes Input
+    // const notesInput = document.getElementById('daily-notes'); // Notes Input - REMOVED
 
     const today = new Date().toISOString().split('T')[0];
     dateInput.value = today;
@@ -174,7 +174,7 @@ function initDailyLogPage() {
             mood: parseInt(moodValueInput.value),
             stress: parseInt(stressLevelInput.value),
             sleep: parseFloat(document.getElementById('sleep-duration').value),
-            notes: notesInput.value.trim() // SAVED: Notes field
+            // notes: notesInput.value.trim() // REMOVED: Notes field
         };
 
         entries.unshift(newEntry);
@@ -354,11 +354,11 @@ function displayFullHistory(entries) {
     const tableBody = document.querySelector('#data-history-table tbody');
     if (!tableBody) return;
     
-    // Update the table header to include Notes
+    // Check if Notes column was accidentally inserted in the header (and remove it)
     const tableHead = document.querySelector('#data-history-table thead tr');
-    // Ensure the Notes column header exists before proceeding
-    if (tableHead.children.length === 4) {
-        tableHead.innerHTML += '<th>Notes</th>';
+    // We expect exactly 4 columns now. If there are 5 (meaning 'Notes' is present), remove the last one.
+    if (tableHead && tableHead.children.length === 5) {
+        tableHead.removeChild(tableHead.lastElementChild);
     }
 
     tableBody.innerHTML = ''; 
@@ -366,7 +366,7 @@ function displayFullHistory(entries) {
     if (entries.length === 0) {
         const row = tableBody.insertRow();
         const cell = row.insertCell();
-        cell.colSpan = 5; // Updated colspan to 5
+        cell.colSpan = 4; // ADJUSTED: Colspan set to 4
         cell.textContent = 'No entries found for the selected date or in recent history.';
         cell.style.textAlign = 'center';
         cell.style.fontStyle = 'italic';
@@ -389,13 +389,6 @@ function displayFullHistory(entries) {
         row.insertCell().textContent = moodText;
         row.insertCell().textContent = `${entry.stress}/5`;
         row.insertCell().textContent = entry.sleep;
-        // ADDED: Display Notes
-        const notesCell = row.insertCell();
-        notesCell.textContent = entry.notes || '—'; // Display '—' if notes are empty
-        notesCell.style.maxWidth = '250px';
-        notesCell.style.whiteSpace = 'nowrap';
-        notesCell.style.overflow = 'hidden';
-        notesCell.style.textOverflow = 'ellipsis';
-        notesCell.title = entry.notes || 'No notes.'; 
+        // The Notes column cell is deliberately excluded here.
     });
 }
