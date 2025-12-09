@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WellTrack U - Monthly Report</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1 class="site-title">WELLTRACK U</h1>
+            
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="index.html">Daily Log</a></li>
+                    <li><a href="report.html" class="active">Monthly Report</a></li>
+                    <li><a href="meditate.html">Meditation</a></li>
+                    <li><a href="team.html">About the Team</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button id="logout-btn" class="auth-btn">Logout</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <h2>📊 Your Monthly Wellness Report</h2>
+
+        <section class="wellness-advisory">
+            <h3>Wellness Advisory</h3>
+            <div id="advisory-message">
+                <p>Generating personalized advice based on your last 30 days of data...</p>
+            </div>
+        </section>
+
+        <section class="report-summary">
+            <h3>Key Metrics (Last 30 Days)</h3>
+            <div class="summary-grid">
+                <div class="metric-card">
+                    <h4>Average Stress Level</h4>
+                    <p><span id="avg-stress">N/A</span> / 5</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Average Sleep Duration</h4>
+                    <p><span id="avg-sleep">N/A</span> hrs</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Highest Stress Date</h4>
+                    <p><span id="highest-stress-date">N/A</span></p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="trend-chart-section">
+            <h3>Last 7 Days Trend: Stress vs. Sleep</h3>
+            
+            <div class="chart-container">
+                <div id="stress-bar-chart" class="bar-chart">
+                    <p style="text-align: center; width: 100%; margin: auto;">Loading data...</p>
+                </div>
+                
+                <div class="chart-legend">
+                    <span class="stress-legend">Stress (1-5)</span>
+                    <span class="sleep-legend">Sleep (Hrs)</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="history-table">
+            <h3>Full Data History</h3>
+
+            <div class="date-search-group">
+                <label for="date-search-input" class="search-label">Filter by Date:</label>
+                <input type="date" id="date-search-input" class="search-input">
+                <button id="clear-search-btn" class="btn secondary">Clear Filter</button>
+            </div>
+            <p id="filter-message" class="filter-message">Showing all recent entries.</p>
+
+            <table id="data-history-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Mood Rating</th>
+                        <th>Stress Level</th>
+                        <th>Sleep (hrs)</th>
+                </thead>
+                <tbody>
+                    <tr><td colspan="5" style="text-align: center;">No entries found.</td></tr> </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 WellTrack U. All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>

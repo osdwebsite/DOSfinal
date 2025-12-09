@@ -1,0 +1,780 @@
+:root {
+    --primary-color: #4CAF50; /* Green */
+    --secondary-color: #008CBA; /* Blue */
+    --accent-color: #FFC107; /* Yellow/Amber for emphasis */
+    --text-color: #333;
+    --light-text: #666;
+    --background-color: #f4f4f9;
+    --card-background: #ffffff;
+    --border-color: #ddd;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding-top: 70px; /* Space for fixed header */
+}
+
+/* --- Header & Navigation --- */
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 0;
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.site-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.main-nav {
+    list-style: none;
+    display: flex;
+    margin-right: 20px;
+}
+
+.main-nav li {
+    margin: 0 15px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: border-bottom 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.auth-buttons .auth-btn {
+    text-decoration: none;
+    color: white;
+    background-color: var(--secondary-color);
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    margin-left: 10px;
+    border: 1px solid var(--secondary-color);
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.auth-buttons .auth-btn:hover {
+    background-color: #007bb5;
+    border-color: #007bb5;
+}
+
+#logout-btn {
+    background-color: #F44336; /* Red for logout */
+    border-color: #F44336;
+}
+
+#logout-btn:hover {
+    background-color: #d32f2f;
+    border-color: #d32f2f;
+}
+
+/* --- General Layout & Containers --- */
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+h2, h3, h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+section {
+    background-color: var(--card-background);
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Utility Classes --- */
+.hidden {
+    display: none !important;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: #388E3C; /* Darker green */
+}
+
+.btn.secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn.secondary:hover {
+    background-color: #007bb5;
+}
+
+.error-message {
+    color: #F44336;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.success-message {
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* * ========================================
+ * AUTH PAGE STYLES (login.html & register.html)
+ * ========================================
+ */
+
+.auth-page {
+    padding-top: 100px;
+    background-color: #e0f7fa; /* Light cyan background */
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 170px); 
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    text-align: center;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.auth-card h2 {
+    color: var(--secondary-color);
+}
+
+.switch-auth-link {
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.switch-auth-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* --- Forms and Inputs (Used by ALL forms including auth) --- */
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+input[type=email], 
+input[type=password], 
+input[type=date], 
+input[type=number] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+input[type=email]:focus,
+input[type=password]:focus,
+input[type=date]:focus,
+input[type=number]:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+/* NEW: Textarea styling for Daily Log Notes */
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1em;
+    resize: vertical; /* Allow vertical resizing only */
+    transition: border-color 0.3s;
+    font-family: inherit; /* Use same font as body */
+}
+
+textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+/* Custom Range/Stress-input style */
+input[type="range"] {
+    width: calc(100% - 40px);
+    margin-right: 15px;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 3px solid white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#stress-value {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* --- Mood Selector (Daily Log) --- */
+
+.mood-selector {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.mood-btn {
+    flex: 1 1 18%; /* Allows 5 buttons per line on wider screens */
+    padding: 15px 5px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+.mood-btn:hover {
+    border-color: var(--secondary-color);
+}
+
+.mood-btn.selected {
+    background-color: var(--accent-color);
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+/* --- Home Page Specifics --- */
+
+.welcome-banner {
+    text-align: center;
+    padding: 60px 30px;
+    background: linear-gradient(135deg, var(--primary-color), #81c784);
+    color: white;
+    box-shadow: var(--shadow);
+}
+
+.welcome-banner h2 {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.welcome-banner p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.feature-card {
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: #fff;
+}
+
+.feature-card h4 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.feature-card a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* --- SDG Info Section (Used by Home and Daily Log) --- */
+
+.sdg-info {
+    border-top: 5px solid var(--primary-color);
+    padding-top: 15px;
+}
+
+.sdg-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #e8f5e9; /* Light green background */
+    border-radius: var(--border-radius);
+}
+
+.sdg-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sdg-card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+/* --- Report Page Specifics --- */
+
+.report-summary .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.metric-card {
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed var(--primary-color);
+    border-radius: var(--border-radius);
+    background-color: #f1f8e9;
+}
+
+.metric-card h4 {
+    color: var(--light-text);
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.metric-card p {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.wellness-advisory {
+    border-left: 5px solid var(--secondary-color);
+    padding: 15px 25px;
+}
+
+.wellness-advisory h3 {
+    color: var(--secondary-color);
+}
+
+.wellness-advisory p strong {
+    color: #F44336; /* Default warning color */
+}
+
+/* --- Bar Chart Visuals (Dual Bars) FIXES --- */
+
+.chart-container {
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: #fafafa;
+}
+
+.bar-chart {
+    position: relative; 
+    display: flex;
+    align-items: flex-end;
+    height: 250px; 
+    padding: 15px 5px 30px; /* Added padding to bottom for labels */
+    gap: 10px;
+    
+    /* Horizontal line for 50% height (Stress 2.5/5, Sleep 5 Hrs) */
+    background: 
+        linear-gradient(to top, transparent 49.5%, rgba(0,0,0,0.1) 49.5%, rgba(0,0,0,0.1) 50.5%, transparent 50.5%) 
+    ;
+    background-size: 100% 100%;
+    margin-bottom: 20px; 
+}
+
+/* FIX: Ensure day wrapper behaves as expected for positioning */
+.bar-chart .day-wrapper {
+    position: relative; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end; 
+    height: 100%; /* Important: Takes up full chart height */
+}
+
+.bar-chart .day-wrapper span {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.8em;
+    color: var(--text-color);
+    /* Ensure label sits below the chart area */
+    position: absolute;
+    bottom: -20px; 
+}
+
+.bar-group {
+    height: 100%; 
+    display: flex;
+    gap: 2px;
+    width: 100%;
+    align-items: flex-end;
+    min-height: 150px;
+}
+
+.chart-bar {
+    min-width: 30px; 
+    flex: 1; 
+    transition: height 0.5s ease-out;
+    border-radius: 4px 4px 0 0;
+    opacity: 0.9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative; 
+    z-index: 20; 
+    /* Ensure bars start from the bottom */
+    align-self: flex-end; 
+}
+
+.bar-stress {
+    background-color: #F44336; /* Red (Color fix: Stress is usually red/warning) */
+}
+
+.bar-sleep {
+    background-color: var(--secondary-color); /* Blue (Color fix: Sleep is usually blue/calm) */
+}
+
+.chart-legend {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.stress-legend::before {
+    content: "■";
+    color: #F44336;
+    margin-right: 5px;
+    font-size: 1.2em;
+}
+
+.sleep-legend::before {
+    content: "■";
+    color: var(--secondary-color);
+    margin-right: 5px;
+    margin-left: 15px;
+    font-size: 1.2em;
+}
+
+/* --- History Table --- */
+
+.history-table {
+    overflow-x: auto;
+}
+
+.date-search-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-label {
+    font-weight: 600;
+}
+
+.search-input {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+#filter-message {
+    font-style: italic;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+#data-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    min-width: 700px; 
+}
+
+#data-history-table th, 
+#data-history-table td {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: left;
+}
+
+#data-history-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+#data-history-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#data-history-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Style for Notes Column */
+#data-history-table th:nth-child(5),
+#data-history-table td:nth-child(5) {
+    width: 30%; 
+    max-width: 250px;
+}
+
+/* --- Meditation Page Specifics --- */
+
+.meditation-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.meditation-card h3 {
+    color: var(--secondary-color);
+}
+
+.meditation-card .btn {
+    margin-top: 15px;
+}
+
+/* --- Team Page Specifics --- */
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.member-card {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.member-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid var(--accent-color);
+}
+
+.member-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.member-card p {
+    color: var(--light-text);
+    font-size: 0.9em;
+}
+
+/* --- Footer --- */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+/* --- Media Queries for Responsiveness (Max-width: 600px) --- */
+
+@media (max-width: 600px) {
+    body {
+        padding-top: 120px; /* Adjust padding for stacked header */
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .site-title {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    nav {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .main-nav li {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .main-nav a {
+        display: block;
+        padding: 5px;
+    }
+
+    .auth-buttons {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .auth-buttons .auth-btn {
+        margin: 0 5px;
+        flex: 1;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    /* Daily Log */
+    .mood-selector {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .mood-btn {
+        flex: 1 1 100%;
+        font-size: 1em;
+    }
+
+    /* Report */
+    .report-summary .summary-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .date-search-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-input, .search-label, .btn.secondary {
+        width: 100%;
+    }
+
+    /* Home */
+    .welcome-banner {
+        padding: 40px 15px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .btn.primary, .btn.secondary {
+        width: 100%;
+    }
+
+    /* Chart */
+    .bar-chart {
+        height: 200px;
+    }
+    
+    .bar-chart .day-wrapper {
+        min-width: 10%;
+    }
+}
